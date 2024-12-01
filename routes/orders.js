@@ -1,9 +1,14 @@
-const express = require("express")
-const OrderController = require("../controllers/OrderController")
-const { authentication } = require("../middleware/authentication")
-const router = express.Router()
+const express = require("express");
+const OrderController = require("../controllers/OrderController");
+const { authentication } = require("../middleware/authentication");
+const router = express.Router();
 
-router.post("/orders",authentication, OrderController.insert)
-router.get("/getAll",OrderController.getAll)
+router.post("/order", authentication, (req, res) => {
+    OrderController.insert(req, res);
+});
 
-module.exports = router
+router.get("/getAll", (req, res) => {
+    OrderController.getAll(req, res);
+});
+
+module.exports = router;

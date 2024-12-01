@@ -15,6 +15,10 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER
       },
+      totalPrice: {  
+        type: Sequelize.FLOAT, 
+        allowNull: false 
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

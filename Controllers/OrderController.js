@@ -1,33 +1,56 @@
-const { Order , Product ,} = require("../models/index")
+const { Order, Product } = require("../models/index");
 
 const OrderController = {
-    async insert(req,res){
+    async insert(req, res) {
         try {
-            const order = await Order.create(req.body)
-            res.status(201).send({message:"Order created successfully",order})
-            .then(order=>{
-                order.addProduct(req.body.ProductId)
-                res.send(order)
-            })
+            const order = await Order.create({
+                UserId: req.body.UserId, 
+                totalPrice: req.body.totalPrice,
+                status: req.body.status 
+            });
+
+            
+            if (req.body.ProductIds && req.body.ProductIds.length > 0) {
+                
+                for (let productId of req.body.ProductIds) {
+                    await order.addProduct(productId);
+                }
+            }
+
+            res.status(201).send({
+                message: "Order created successfully",
+                order
+            });
         } catch (error) {
             console.error(error);
-            res.status(500).send({message:"There was a problem",error})
+            res.status(500).send({
+                message: "There was a problem",
+                error
+            });
         }
     },
-    async getAll(req,res){
+
+    async getAll(req, res) {
         try {
             const orders = await Order.findAll({
-                include:{
+                include: {
                     model: Product,
-                    attributes:["name","price"]
+                    attributes: ["name", "price"]
                 }
-            })
-            res.send({message:"Here are all the orders",orders})
+            });
+
+            res.send({
+                message: "Here are all the orders",
+                orders
+            });
         } catch (error) {
             console.error(error);
-            res.status(500).send({message:"There was a problem",error})
+            res.status(500).send({
+                message: "There was a problem",
+                error
+            });
         }
     },
-}
+};
 
 module.exports = OrderController

@@ -24,10 +24,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Order.init({
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    totalPrice: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'pending' 
+    },
   }, {
     sequelize,
     modelName: 'Order',
   });
+
   return Order;
 };
