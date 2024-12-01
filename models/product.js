@@ -46,6 +46,9 @@ module.exports = (sequelize) => {
         }
       }
     },
+    stock: {
+      type: DataTypes.INTEGER,  
+      allowNull: false, 
     CategoryId: {
       type: DataTypes.INTEGER,
       references: {
@@ -54,7 +57,6 @@ module.exports = (sequelize) => {
       }
     }
   }, 
-  {
     sequelize,
     modelName: 'Product',
   });
