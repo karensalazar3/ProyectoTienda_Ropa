@@ -31,8 +31,6 @@ Se pueden añadir productos con su descripción, precio y categoría asignada. T
 Los usuarios pueden realizar pedidos, vinculando los productos deseados.
 - Relación Productos-Pedidos: 
 Implementé una tabla intermedia para manejar la relación entre productos y pedidos, lo que permite agregar múltiples productos a un pedido.
-- Reseñas de Productos: 
-Los usuarios pueden calificar los productos con comentarios, lo que mejora la experiencia del cliente.
 
 ## Tecnologías Utilizadas 🛠️
 
@@ -58,7 +56,6 @@ GET /categories: Obtiene todas las categorías.
 POST /categories: Crea una nueva categoría.
 PUT /categories/:id: Actualiza una categoría existente.
 DELETE /categories/:id: Elimina una categoría.
-
 ## Productos 👙
 GET /products: Obtiene todos los productos.
 POST /products: Crea un nuevo producto.
@@ -71,16 +68,6 @@ GET /orders/:id: Obtiene un pedido específico.
 ## Productos en Pedido 🛒
 POST /order-products: Relaciona un producto a un pedido con la cantidad deseada.
 
-## Reseñas ⭐
-POST /reviews: Crea una nueva reseña para un producto.
-GET /reviews: Obtiene todas las reseñas.
-## Variables de Entorno 🌱
-Asegúrate de tener configurado tu entorno con las siguientes variables:
-
-DB_HOST: Dirección del host de la base de datos.
-DB_USER: Usuario de la base de datos.
-DB_PASSWORD: Contraseña del usuario.
-DB_NAME: Nombre de la base de datos.
 ## Contribución 🤝
 Las contribuciones son bienvenidas. Si tienes alguna sugerencia o mejora, por favor crea un issue o envía un pull request.
 
