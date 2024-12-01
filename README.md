@@ -47,7 +47,7 @@ Los usuarios pueden calificar los productos con comentarios, lo que mejora la ex
 1. **Clonar el repositorio**:
 
    ```bash
-   git clone https://github.com/karensalazar3/ProyectoTiendaRopaKs/edit/main/README.md
+   git clone: https://github.com/karensalazar3/ProyectoTienda_Ropa
    cd tienda-ropa
    Rutas de la API 🌐
 ## Autenticación 🔑
