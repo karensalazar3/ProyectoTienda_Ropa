@@ -7,18 +7,28 @@ const ProductController = {
             const product = await Product.create(req.body)
             res.status(201).send({message:"Product created successfully",product})
         } catch (error) {
+            if (error.name === "sequelizeValidationError"){
+                return res.status(400).send({
+                    message: "Validation error",
+                    errors: error.errors.map(e => e.message)
+                });
+            }else if (error.name === "SequelizeDatabaseError") {
+                return res.status(500).send({ message: "Database error", error: error.message });
+            }
             console.error(error);
             res.status(500).send({message:"There was a problem",error})
         }
     },
-    async getByID(req,res){
+    async getByID(req, res) {
         try {
             const product = await Product.findByPk(req.params.id);
-            res.send(product)
+            if (!product) {
+                return res.status(404).send({ message: `Product with ID ${req.params.id} not found` });
+            }
+            res.send(product);
         } catch (error) {
             console.error(error);
-            res.status(500).send({message:"There was a problem",error})
-
+            res.status(500).send({ message: "There was a problem", error });
         }
     },
     async getOneByName(req,res){
@@ -29,6 +39,10 @@ const ProductController = {
                         [Op.like]: `%${req.params.name}%`
                     }
                 },
+                include: {
+                    model: Category,
+                    attributes: ['id','name']
+                }
             })
             res.send(product)
 

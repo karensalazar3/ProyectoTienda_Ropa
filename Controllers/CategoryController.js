@@ -4,10 +4,10 @@ const CategoryController = {
     async create(req, res) { //Endpoint para crear una categoría
         try {
           const category = await Category.create(req.body);
-          res.status(201).send({ message: "Publicación creada", Category });
+          res.status(201).send({ message: "Publicación creada", category });
         } catch (error) {
           console.error(error);
-          res.status(500).send({ message: "Ha habido un error", Category });
+          res.status(500).send({ message: "Ha habido un error", error });
         }
       },
       async update(req, res) {//Endpoint para actualizar una categoría
@@ -58,7 +58,7 @@ const CategoryController = {
         try {
           const category = await Category.findAll({
             where:{
-              name_category:{
+              name:{
                 [Op.like]:`%${req.params.name}%`
               }
             }

@@ -1,4 +1,4 @@
-const { User, Token, Sequelize} = require("../models/index")
+const { User, Product,Token, Sequelize, Order} = require("../models/index")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { jwt_secret} = require("../config/config.json")["development"]
@@ -51,13 +51,14 @@ const UserController ={
     },
     async getUserInfoLogged(req,res){
         try {
-            const users = await User.findByPK(req.user.id,{
-                attributes:["description"],
-                model: Order,
+            const users = await User.findByPk(req.user.id,{
                 include:{
+                    model: Order,
+                    include:{
                     model:Product,
-                    attributes:["name","price"]
+                    attributes:["description","price"]
                 }
+            }
             })
             res.send({message:"Here are all the users",users})
         } catch (error) {

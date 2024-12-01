@@ -1,30 +1,39 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require('sequelize'); 
+module.exports = (sequelize) => {
   class Product extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Product.belongsTo(models.Category)
+      Product.belongsTo(models.Category);
       Product.belongsToMany(models.Order, {
         through: 'OrderProduct',
-        foreignKey: 'ProductId',
+        foreignKey: 'CategoryId',
         otherKey: 'OrderId'
       });
     }
   }
   Product.init({
     name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Introduce the product name, please"
+        },
+        notEmpty:{
+          msg: "The name field cannot be empty"
+        }
+      }
+    },
+    description: {
       type:DataTypes.STRING,
       allowNull:false,
       validate:{
         notNull:{
-          msg:"Introduce your name, please"
+          msg:"Introduce your description, please"
+        },
+        len: {
+          args: [10, 255], 
+          msg: "The description must be between 10 and 255 characters"
         }
       }
     },
@@ -37,8 +46,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    CategoryId: DataTypes.INTEGER
-  }, {
+    CategoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Categories',
+        key: 'id'
+      }
+    }
+  }, 
+  {
     sequelize,
     modelName: 'Product',
   });

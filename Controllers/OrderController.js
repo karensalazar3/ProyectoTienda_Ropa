@@ -1,4 +1,4 @@
-const { Order , Product } = require("../models/index")
+const { Order , Product ,} = require("../models/index")
 
 const OrderController = {
     async insert(req,res){
@@ -17,7 +17,6 @@ const OrderController = {
     async getAll(req,res){
         try {
             const orders = await Order.findAll({
-                attributes:["description"],
                 include:{
                     model: Product,
                     attributes:["name","price"]

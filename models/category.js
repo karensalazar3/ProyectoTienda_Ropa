@@ -13,14 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Category.hasMany(models.Product,{
         through:models.ProductoCategoria,
-        foreignKey:"category_Id",
+        foreignKey:"categoryId",
         as:"products"
       })
     }
   }
   Category.init({
-    name_category: DataTypes.STRING,
-    description: DataTypes.STRING
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Category',
