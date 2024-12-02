@@ -49,29 +49,29 @@ Implementé una tabla intermedia para manejar la relación entre productos y ped
    cd tienda-ropa
    Rutas de la API 🌐
 ## Autenticación 🔑
-POST /users/register: Registra un nuevo usuario.
-POST /users/login: Inicia sesión y devuelve un token JWT.
+- POST /users/register: Registra un nuevo usuario.
+- POST /users/login: Inicia sesión y devuelve un token JWT.
 ## Categorías 🏷️
-GET /categories: Obtiene todas las categorías.
-POST /categories: Crea una nueva categoría.
-PUT /categories/:id: Actualiza una categoría existente.
-DELETE /categories/:id: Elimina una categoría.
+- GET /categories: Obtiene todas las categorías.
+- POST /categories: Crea una nueva categoría.
+- PUT /categories/:id: Actualiza una categoría existente.
+- DELETE /categories/:id: Elimina una categoría.
 ## Productos 👙
-GET /products: Obtiene todos los productos.
-POST /products: Crea un nuevo producto.
-PUT /products/:id: Actualiza un producto existente.
-DELETE /products/:id: Elimina un producto.
+- GET /products: Obtiene todos los productos.
+- POST /products: Crea un nuevo producto.
+- PUT /products/:id: Actualiza un producto existente.
+- DELETE /products/:id: Elimina un producto.
 ## Pedidos 📦
-GET /orders: Obtiene todos los pedidos.
-POST /orders: Crea un nuevo pedido.
-GET /orders/:id: Obtiene un pedido específico.
+- GET /orders: Obtiene todos los pedidos.
+- POST /orders: Crea un nuevo pedido.
+- GET /orders/:id: Obtiene un pedido específico.
 ## Productos en Pedido 🛒
-POST /order-products: Relaciona un producto a un pedido con la cantidad deseada.
+- POST /order-products: Relaciona un producto a un pedido con la cantidad deseada.
 
 ## Contribución 🤝
-Las contribuciones son bienvenidas. Si tienes alguna sugerencia o mejora, por favor crea un issue o envía un pull request.
+- Las contribuciones son bienvenidas. Si tienes alguna sugerencia o mejora, por favor crea un issue o envía un pull request.
 
 ## Licencia 📜
-Este proyecto está bajo la licencia MIT.
+- Este proyecto está bajo la licencia MIT.
 
 ## Autor: Karen Salazar.
